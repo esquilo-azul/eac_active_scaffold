@@ -4,7 +4,8 @@ module EacActiveScaffold
   module Patches
     module ActionDispatch
       ACTIVE_SCAFFOLD_CONCERNS = {
-        active_scaffold: -> {  ::ActiveScaffold::Routing::Basic.new(association: true) }
+        active_scaffold: -> {  ::ActiveScaffold::Routing::Basic.new(association: true) },
+        active_scaffold_association: -> { ::ActiveScaffold::Routing::Association.new }
       }.freeze
 
       ACTIVE_SCAFFOLD_CONCERNS.each do |name, proc|
