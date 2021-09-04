@@ -3,22 +3,15 @@
 module EacActiveScaffold
   module Patches
     module ActionDispatch
-      ACTIVE_SCAFFOLD_DEFAULT_CONCERN_NAME = :active_scaffold
+      ACTIVE_SCAFFOLD_CONCERNS = {
+        active_scaffold: -> {  ::ActiveScaffold::Routing::Basic.new(association: true) }
+      }.freeze
 
-      def active_scaffold
-        active_scaffold_concern_set
-        active_scaffold_concern_name
-      end
-
-      def active_scaffold_concern_set
-        return if @concerns.key?(active_scaffold_concern_name)
-
-        concern(active_scaffold_concern_name,
-                ::ActiveScaffold::Routing::Basic.new(association: true))
-      end
-
-      def active_scaffold_concern_name
-        ACTIVE_SCAFFOLD_DEFAULT_CONCERN_NAME
+      ACTIVE_SCAFFOLD_CONCERNS.each do |name, proc|
+        define_method name do
+          concern(name, proc.call) unless @concerns.key?(name)
+          name
+        end
       end
     end
   end
