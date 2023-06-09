@@ -2,7 +2,7 @@
 
 require 'eac_active_scaffold/rspec/controller_director'
 
-::RSpec.shared_context 'active_scaffold_controller' do |options|
+::RSpec.shared_context 'active_scaffold_controller' do |options| # rubocop:disable Metrics/BlockLength
   director = ::EacActiveScaffold::Rspec::ControllerDirector.new(self, options)
 
   before do
@@ -13,8 +13,13 @@ require 'eac_active_scaffold/rspec/controller_director'
     expect(page).to have_content director.page_title
   end
 
-  context 'when record is created' do
+  context 'when record is created' do # rubocop:disable Metrics/BlockLength
     let(:before_create_count) { director.model_class.count }
+    let(:created_record) { director.model_class.first }
+    let(:record_href) { %r{/#{::Regexp.quote(created_record.id.to_s)}} }
+    let(:edit_link_args) { [::I18n.t('active_scaffold.edit'), href: record_href] }
+    let(:remove_link_args) { [::I18n.t('active_scaffold.remove'), href: record_href] }
+    let(:show_link_args) { [::I18n.t('active_scaffold.show'), href: record_href] }
 
     before do
       before_create_count
@@ -27,6 +32,18 @@ require 'eac_active_scaffold/rspec/controller_director'
 
     it 'increments record count' do
       expect(director.model_class.count).to eq(before_create_count + 1)
+    end
+
+    it 'have a edit link for record' do
+      expect(page).to have_link(*edit_link_args)
+    end
+
+    it 'have a remove link for record' do
+      expect(page).to have_link(*remove_link_args)
+    end
+
+    it 'have a show link for record' do
+      expect(page).to have_link(*show_link_args)
     end
   end
 end
