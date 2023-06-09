@@ -1,24 +1,25 @@
 # frozen_string_literal: true
 
+require 'eac_active_scaffold/rspec/controller_director'
+
 ::RSpec.shared_context 'active_scaffold_controller' do |options|
-  let(:index_path) { options.fetch(:index_path) }
-  let(:model) { options.fetch(:model) }
+  director = ::EacActiveScaffold::Rspec::ControllerDirector.new(self, options)
 
   before do
-    visit index_path
+    visit director.index_path
   end
 
   it 'show index page' do
-    expect(page).to have_content model.model_name.human(count: 2)
+    expect(page).to have_content director.page_title
   end
 
   it 'create new record' do
     expect do
       click_on ::I18n.t('active_scaffold.create_new')
-      options.fetch(:valid).each do |key, value|
-        fill_in model.human_attribute_name(key), with: value
+      director.valid_data.each do |key, value|
+        fill_in director.attribute_label(key), with: value
       end
       click_on ::I18n.t('active_scaffold.create')
-    end.to change { model.count }.by(1)
+    end.to change { director.model_class.count }.by(1)
   end
 end
