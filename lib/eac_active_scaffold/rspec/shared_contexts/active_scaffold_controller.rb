@@ -16,7 +16,7 @@ require 'eac_active_scaffold/rspec/controller_director'
   it 'create new record' do
     expect do
       click_on ::I18n.t('active_scaffold.create_new')
-      director.valid_data.each do |key, value|
+      director.valid_create_data.each do |key, value|
         fill_in director.attribute_label(key), with: value
       end
       click_on ::I18n.t('active_scaffold.create')

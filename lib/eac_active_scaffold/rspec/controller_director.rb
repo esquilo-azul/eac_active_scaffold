@@ -6,7 +6,8 @@ module EacActiveScaffold
   module Rspec
     class ControllerDirector
       enable_listable
-      lists.add_symbol :option, :controller_class, :index_path, :model_class, :valid_data
+      lists.add_symbol :option, :controller_class, :index_path, :model_class, :valid_data,
+                       :valid_create_data
       common_constructor :example, :options do
         self.options = self.class.lists.option.hash_keys_validate!(options)
       end
@@ -34,6 +35,11 @@ module EacActiveScaffold
       # @return [String]
       def page_title
         model_class.model_name.human(count: 2)
+      end
+
+      # @return [Hash]
+      def valid_create_data
+        options[OPTION_VALID_CREATE_DATA] || valid_data
       end
 
       # @return [Hash]
