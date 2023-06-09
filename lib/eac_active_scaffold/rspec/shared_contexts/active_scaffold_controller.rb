@@ -62,5 +62,18 @@ require 'eac_active_scaffold/rspec/controller_director'
         expect(director.model_class.count).to eq(before_update_count)
       end
     end
+
+    context 'when record is destroyed' do
+      let(:before_destroy_count) { director.model_class.count }
+
+      before do
+        before_destroy_count
+        click_link(*remove_link_args)
+      end
+
+      it 'decrements record count' do
+        expect(director.model_class.count).to eq(before_destroy_count - 1)
+      end
+    end
   end
 end
