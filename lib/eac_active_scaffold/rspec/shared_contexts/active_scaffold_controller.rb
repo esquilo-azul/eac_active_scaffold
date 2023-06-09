@@ -45,5 +45,22 @@ require 'eac_active_scaffold/rspec/controller_director'
     it 'have a show link for record' do
       expect(page).to have_link(*show_link_args)
     end
+
+    context 'when record is updated' do
+      let(:before_update_count) { director.model_class.count }
+
+      before do
+        before_update_count
+        click_link(*edit_link_args)
+        director.valid_update_data.each do |key, value|
+          fill_in director.attribute_label(key), with: value
+        end
+        click_on ::I18n.t('active_scaffold.update')
+      end
+
+      it 'unchanges record count' do
+        expect(director.model_class.count).to eq(before_update_count)
+      end
+    end
   end
 end
