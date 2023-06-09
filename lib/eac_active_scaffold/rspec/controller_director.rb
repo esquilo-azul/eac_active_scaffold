@@ -28,7 +28,7 @@ module EacActiveScaffold
 
       # @return [Class]
       def model_class
-        options.fetch(OPTION_MODEL_CLASS)
+        options[OPTION_MODEL_CLASS] || controller_class.active_scaffold_config.model
       end
 
       # @return [String]
