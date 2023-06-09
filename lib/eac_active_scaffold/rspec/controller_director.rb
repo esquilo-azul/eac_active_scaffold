@@ -6,7 +6,7 @@ module EacActiveScaffold
   module Rspec
     class ControllerDirector
       enable_listable
-      lists.add_symbol :option, :index_path, :model_class, :valid_data
+      lists.add_symbol :option, :controller_class, :index_path, :model_class, :valid_data
       common_constructor :example, :options do
         self.options = self.class.lists.option.hash_keys_validate!(options)
       end
@@ -14,6 +14,11 @@ module EacActiveScaffold
       # @return [String]
       def attribute_label(attr)
         model_class.human_attribute_name(attr)
+      end
+
+      # @return [Class]
+      def controller_class
+        options[:controller_class] || example.described_class
       end
 
       # @return [String]
