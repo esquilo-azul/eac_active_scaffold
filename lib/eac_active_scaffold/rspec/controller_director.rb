@@ -7,7 +7,7 @@ module EacActiveScaffold
     class ControllerDirector
       enable_listable
       lists.add_symbol :option, :controller_class, :index_path, :model_class, :valid_data,
-                       :valid_create_data
+                       :valid_create_data, :valid_update_data
       common_constructor :example, :options do
         self.options = self.class.lists.option.hash_keys_validate!(options)
       end
@@ -45,6 +45,11 @@ module EacActiveScaffold
       # @return [Hash]
       def valid_data
         options.fetch(OPTION_VALID_DATA)
+      end
+
+      # @return [Hash]
+      def valid_update_data
+        options[OPTION_VALID_UPDATE_DATA] || valid_data
       end
     end
   end
