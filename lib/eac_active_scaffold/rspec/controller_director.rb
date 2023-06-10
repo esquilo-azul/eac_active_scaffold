@@ -21,9 +21,7 @@ module EacActiveScaffold
       # @param attrs [Hash]
       # @return [void]
       def attributes_set(example, attrs)
-        attrs.each do |attr, value|
-          example.fill_in attribute_label(attr), with: value
-        end
+        attrs.each { |attr, value| attribute_set(example, attr, value) }
       end
 
       # @return [Class]
@@ -60,6 +58,8 @@ module EacActiveScaffold
       def valid_update_data
         options[OPTION_VALID_UPDATE_DATA] || valid_data
       end
+
+      require_sub __FILE__, require_mode: :kernel
     end
   end
 end
