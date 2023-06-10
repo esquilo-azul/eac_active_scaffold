@@ -11,6 +11,8 @@ module EacActiveScaffold
 
         def result
           text_fill
+        rescue ::Capybara::ElementNotFound
+          select_option
         end
 
         private
@@ -22,6 +24,12 @@ module EacActiveScaffold
 
         def label
           director.attribute_label(name)
+        end
+
+        def select_option
+          example.within field do
+            example.find("option[value='#{value}']").select_option
+          end
         end
 
         def text_fill
