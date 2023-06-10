@@ -15,12 +15,17 @@ module EacActiveScaffold
 
         private
 
+        # @return [Capybara::Node::Element]
+        def field
+          example.find_field(label)
+        end
+
         def label
           director.attribute_label(name)
         end
 
         def text_fill
-          example.fill_in label, with: value
+          field.fill_in with: value
         end
       end
     end
