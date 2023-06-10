@@ -24,9 +24,7 @@ require 'eac_active_scaffold/rspec/controller_director'
     before do
       before_create_count
       click_on ::I18n.t('active_scaffold.create_new')
-      director.valid_create_data.each do |key, value|
-        fill_in director.attribute_label(key), with: value
-      end
+      director.attributes_set(self, director.valid_create_data)
       click_on ::I18n.t('active_scaffold.create')
     end
 
@@ -52,9 +50,7 @@ require 'eac_active_scaffold/rspec/controller_director'
       before do
         before_update_count
         click_link(*edit_link_args)
-        director.valid_update_data.each do |key, value|
-          fill_in director.attribute_label(key), with: value
-        end
+        director.attributes_set(self, director.valid_update_data)
         click_on ::I18n.t('active_scaffold.update')
       end
 

@@ -17,6 +17,15 @@ module EacActiveScaffold
         model_class.human_attribute_name(attr)
       end
 
+      # @param example [RSpec::Core::ExampleGroup]
+      # @param attrs [Hash]
+      # @return [void]
+      def attributes_set(example, attrs)
+        attrs.each do |attr, value|
+          example.fill_in attribute_label(attr), with: value
+        end
+      end
+
       # @return [Class]
       def controller_class
         options[:controller_class] || example.described_class
