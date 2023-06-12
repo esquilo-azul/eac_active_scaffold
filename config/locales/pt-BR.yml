@@ -20,7 +20,7 @@ pt-BR:
     cant_destroy_record: "%{record} não pode ser removido"
     changes: Mudanças
     click_to_edit: Clique para alterar
-    click_to_reset: Clique para resetar
+    click_to_reset: Clique para restaurar
     close: Fechar
     config_list: Configurar
     config_list_model: Configurar Colunas para %{model}
