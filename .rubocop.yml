@@ -1,9 +1,6 @@
 ---
 inherit_gem:
   eac_rails_gem_support: ".rubocop.yml"
-Gemspec/RequiredRubyVersion:
-  Exclude:
-  - eac_active_scaffold.gemspec
 Style/HashAsLastArrayItem:
   Exclude:
   - lib/eac_active_scaffold/rspec/shared_contexts/active_scaffold_controller.rb
