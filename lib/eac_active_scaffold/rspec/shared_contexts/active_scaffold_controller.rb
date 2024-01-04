@@ -13,6 +13,8 @@ RSpec.shared_context 'active_scaffold_controller' do |options| # rubocop:disable
     expect(page).to have_content director.page_title
   end
 
+  next unless director.create?
+
   context 'when record is created' do # rubocop:disable Metrics/BlockLength
     let(:before_create_count) { director.model_class.count }
     let(:created_record) { director.model_class.first }

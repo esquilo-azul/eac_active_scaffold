@@ -24,6 +24,11 @@ module EacActiveScaffold
         attrs.each { |attr, value| attribute_set(example, attr, value) }
       end
 
+      # @return [Boolean]
+      def create?
+        valid_create_data.present?
+      end
+
       # @return [Class]
       def controller_class
         options[:controller_class] || example.described_class
@@ -51,7 +56,7 @@ module EacActiveScaffold
 
       # @return [Hash]
       def valid_data
-        options.fetch(OPTION_VALID_DATA)
+        options[OPTION_VALID_DATA]
       end
 
       # @return [Hash]
