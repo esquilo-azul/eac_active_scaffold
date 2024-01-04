@@ -19,6 +19,6 @@ module EacActiveScaffold
 end
 
 require 'action_dispatch/routing/mapper'
-::ActionDispatch::Routing::Mapper.include(
-  ::EacActiveScaffold::Patches::ActionDispatch
+ActionDispatch::Routing::Mapper.include(
+  EacActiveScaffold::Patches::ActionDispatch
 )

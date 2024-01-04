@@ -2,8 +2,8 @@
 
 require 'eac_active_scaffold/rspec/controller_director'
 
-::RSpec.shared_context 'active_scaffold_controller' do |options| # rubocop:disable Metrics/BlockLength
-  director = ::EacActiveScaffold::Rspec::ControllerDirector.new(self, options)
+RSpec.shared_context 'active_scaffold_controller' do |options| # rubocop:disable Metrics/BlockLength
+  director = EacActiveScaffold::Rspec::ControllerDirector.new(self, options)
 
   before do
     visit director.index_path
@@ -16,16 +16,16 @@ require 'eac_active_scaffold/rspec/controller_director'
   context 'when record is created' do # rubocop:disable Metrics/BlockLength
     let(:before_create_count) { director.model_class.count }
     let(:created_record) { director.model_class.first }
-    let(:record_href) { %r{/#{::Regexp.quote(created_record.id.to_s)}} }
-    let(:edit_link_args) { [::I18n.t('active_scaffold.edit'), { href: record_href }] }
-    let(:remove_link_args) { [::I18n.t('active_scaffold.remove'), { href: record_href }] }
-    let(:show_link_args) { [::I18n.t('active_scaffold.show'), { href: record_href }] }
+    let(:record_href) { %r{/#{Regexp.quote(created_record.id.to_s)}} }
+    let(:edit_link_args) { [I18n.t('active_scaffold.edit'), { href: record_href }] }
+    let(:remove_link_args) { [I18n.t('active_scaffold.remove'), { href: record_href }] }
+    let(:show_link_args) { [I18n.t('active_scaffold.show'), { href: record_href }] }
 
     before do
       before_create_count
-      click_on ::I18n.t('active_scaffold.create_new')
+      click_on I18n.t('active_scaffold.create_new')
       director.attributes_set(self, director.valid_create_data)
-      click_on ::I18n.t('active_scaffold.create')
+      click_on I18n.t('active_scaffold.create')
     end
 
     it 'increments record count' do
@@ -51,7 +51,7 @@ require 'eac_active_scaffold/rspec/controller_director'
         before_update_count
         click_link(*edit_link_args)
         director.attributes_set(self, director.valid_update_data)
-        click_on ::I18n.t('active_scaffold.update')
+        click_on I18n.t('active_scaffold.update')
       end
 
       it 'unchanges record count' do
