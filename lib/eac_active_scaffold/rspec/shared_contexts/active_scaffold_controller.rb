@@ -35,15 +35,18 @@ RSpec.shared_context 'active_scaffold_controller' do |options| # rubocop:disable
     end
 
     it 'have a edit link for record' do
-      expect(page).to have_link(*edit_link_args)
+      options = edit_link_args.extract_options!
+      expect(page).to have_link(*edit_link_args, **options)
     end
 
     it 'have a remove link for record' do
-      expect(page).to have_link(*remove_link_args)
+      options = remove_link_args.extract_options!
+      expect(page).to have_link(*remove_link_args, **options)
     end
 
     it 'have a show link for record' do
-      expect(page).to have_link(*show_link_args)
+      options = show_link_args.extract_options!
+      expect(page).to have_link(*show_link_args, **options)
     end
 
     context 'when record is updated' do
@@ -51,7 +54,8 @@ RSpec.shared_context 'active_scaffold_controller' do |options| # rubocop:disable
 
       before do
         before_update_count
-        click_link(*edit_link_args)
+        options = edit_link_args.extract_options!
+        click_link(*edit_link_args, **options)
         director.attributes_set(self, director.valid_update_data)
         click_on I18n.t('active_scaffold.update')
       end
@@ -66,7 +70,8 @@ RSpec.shared_context 'active_scaffold_controller' do |options| # rubocop:disable
 
       before do
         before_destroy_count
-        click_link(*remove_link_args)
+        options = remove_link_args.extract_options!
+        click_link(*remove_link_args, **options)
       end
 
       it 'decrements record count' do
