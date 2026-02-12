@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'eac_active_scaffold/rspec/controller_director'
-
 RSpec.shared_context 'active_scaffold_controller' do |options| # rubocop:disable Metrics/BlockLength
   director = EacActiveScaffold::Rspec::ControllerDirector.new(self, options)
 
