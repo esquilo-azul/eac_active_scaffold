@@ -18,7 +18,7 @@ RSpec.shared_context 'active_scaffold_controller' do |options| # rubocop:disable
     let(:created_record) { director.model_class.first }
     let(:record_href) { %r{/#{Regexp.quote(created_record.id.to_s)}} }
     let(:edit_link_args) { [I18n.t('active_scaffold.edit'), { href: record_href }] }
-    let(:remove_link_args) { [I18n.t('active_scaffold.remove'), { href: record_href }] }
+    let(:remove_link_args) { [I18n.t('active_scaffold.delete'), { href: record_href }] }
     let(:show_link_args) { [I18n.t('active_scaffold.show'), { href: record_href }] }
 
     before do
