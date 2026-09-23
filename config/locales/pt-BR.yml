@@ -7,10 +7,12 @@ pt-BR:
     ">": ">"
     ">=": ">="
     _select_: "- selecione -"
-    _to_: " para "
     add: Adicionar
     add_existing: Adicionar Existente
     add_existing_model: Adicionar %{model} Existente
+    add_model: Adicionar %{model}
+    all_tokens: Todas as palavras-chave
+    any_token: Qualquer palavra-chave
     apply: Aplicar
     are_you_sure_to_delete: Tem certeza de que deseja remover %{label}?
     average: Médio
@@ -19,11 +21,10 @@ pt-BR:
     cancel: Cancelar
     cant_destroy_record: "%{record} não pode ser removido"
     changes: Mudanças
+    check_all: Marcar todos
     click_to_edit: Clique para alterar
     click_to_reset: Clique para restaurar
     close: Fechar
-    config_list: Configurar
-    config_list_model: Configurar Colunas para %{model}
     contains: Contém
     create: Criar
     create_another: Criar Outro %{model}
@@ -31,7 +32,6 @@ pt-BR:
     create_model: Criar %{model}
     create_new: Criar Novo
     created_model: '%{model} criado'
-    customize: Customizar
     date_picker_options:
       firstDay: 0
       isRTL: false
@@ -47,6 +47,9 @@ pt-BR:
     deleted_model: '%{model} removido'
     deleted_records: Listar Registros Removidos
     delimiter: Delimitador
+    doesnt_begin_with: Não inicia com
+    doesnt_contain: Não contém
+    doesnt_end_with: Não termina com
     download: Download
     edit: Alterar
     ends_with: Termina com
@@ -73,7 +76,7 @@ pt-BR:
     internal_error: Requisição falhou
     live_search: Live Search
     loading: Carregando…
-    mark_all_records: Marcar todos
+    logical_search: Busca Lógica
     maximum: Máximo
     minimum: Mínimo
     minutes: Minutos
@@ -91,16 +94,13 @@ pt-BR:
     no_options: Sem opções
     not_null: Não Nulo
     'null': 'Nulo'
-    omit_header: Omitir Cabeçalho
     optional_attributes: Mais Opções
     options: Opções
     past: Passado
-    pdf: PDF
     prev_month: Último Mês
     prev_week: Última Semana
     prev_year: Último Ano
     previous: Anterior
-    print: Imprimir
     range: Intervalo
     record_not_saved: Gravação do registro falhou por falha desconhecida
     records_marked:
@@ -113,14 +113,12 @@ pt-BR:
     replace_existing: Substituir Existente
     replace_with_new: Substituir com Novo
     reset: Restaurar
-    revisions_for_model: Revisões para %{model}
     saving: Salvando…
     search: Buscar
     search_terms: Buscar Termos
     seconds: Segundos
     show: Mostrar
     show_block: "(Mostrar)"
-    show_model: Mostrar %{model}
     sum: Soma
     this_month: Este Mês
     this_week: Esta Semana
@@ -128,6 +126,7 @@ pt-BR:
     today: Hoje
     tomorrow: Amanhã
     'true': 'Verdadeiro'
+    uncheck_all: Desmarcar todos
     update: Alterar
     update_apply: Aplicar
     update_model: Alterar %{model}
@@ -136,3 +135,14 @@ pt-BR:
     weeks: Semanas
     years: Anos
     yesterday: Ontem
+  date:
+    formats:
+      month: "%B"
+      quarter: Trimestre %{num}
+      week: Semana %W, %Y
+      year_month: "%b %Y"
+      year_quarter: Trimestre %{quarter} de %{year}
+  datetime:
+    prompts:
+      millisec: Milissegundo
+      microsec: Microssegundo
