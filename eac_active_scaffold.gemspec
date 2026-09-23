@@ -14,9 +14,9 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 2.7' # rubocop:disable Gemspec/RequiredRubyVersion
 
   s.add_dependency 'active_scaffold', '~> 3.7', '>= 3.7.13'
-  s.add_dependency 'eac_rails_utils', '~> 0.28'
-  s.add_dependency 'eac_ruby_utils', '~> 0.130'
+  s.add_dependency 'eac_rails_utils', '~> 0.32'
+  s.add_dependency 'eac_ruby_utils', '~> 0.134', '>= 0.134.1'
   s.add_dependency 'recordselect', '~> 3.10', '>= 3.10.9'
 
-  s.add_development_dependency 'eac_rails_gem_support', '~> 0.12'
+  s.add_development_dependency 'eac_rails_gem_support', '~> 0.15'
 end
