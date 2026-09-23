@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.summary     = 'Put here de description.'
 
   s.files = Dir['{app,config,lib}/**/*']
-  s.required_ruby_version = '>= 2.7'
+  s.required_ruby_version = '>= 2.7' # rubocop:disable Gemspec/RequiredRubyVersion
 
   s.add_dependency 'active_scaffold', '~> 3.7', '>= 3.7.13'
   s.add_dependency 'eac_rails_utils', '~> 0.28'
