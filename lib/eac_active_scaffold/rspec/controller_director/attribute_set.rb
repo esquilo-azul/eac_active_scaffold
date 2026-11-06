@@ -13,6 +13,11 @@ module EacActiveScaffold
           select_option
         end
 
+        # @return [Object]
+        def value
+          @value.respond_to?(:call) ? example.instance_exec(&@value) : @value
+        end
+
         private
 
         # @return [Capybara::Node::Element]
